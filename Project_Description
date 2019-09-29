@@ -1,0 +1,8 @@
+This description is for a Arduino controlled car. In this project you learn how to use:
+- DC Motors
+- Ultrasonic Sensors
+- H Bridges
+- Defining Variables
+- Using maps
+By looking at the code in the document "Arduino Car" there is the information and tutorial behind the 
+maps, PinMode and defining variables. When defining varibles

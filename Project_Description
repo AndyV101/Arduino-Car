@@ -66,5 +66,5 @@ Pins 8 and 16 are the power supply pins
 Pin 9 is the enable for the Output 3 and 4. This is used so that when the motor is connected to power it is on and when it is 
 connected to the ground it is off. 
 
-Pins 11 and 14 is where the right motor gets connected to teh H Bridge. 
+Pins 11 and 14 is where the right motor gets connected to the H Bridge. 
 

@@ -10,12 +10,61 @@ In the Arduino Car you use the DC Motor as the power to the wheels. DC Motors ha
 swap the wires on the motor it reverses the direction of the motors. The most common use for DC Motors is for a wheel of a car 
 but you could also use it for a makeshift fan or DIY blender.
 
+A H Bridge controller in this circuit is used to power the motor and control whether it is going forward or reverse. As seen
+below the H Bridge controller has 4 switches. When switch 1 and switch 4 are closed the motor spins in one direction. When 
+you close switch 2 and switch 3 the motor spins in the other direction. 
+
+                                         (CURRENT)                                         (CURRENT)
+   |                 |                 |     |              |                 |                |    |
+   |                 |                 |     |              |                 |                |    |
+SWITCH 1          SWITCH 3         SWITCH 1  |          SWITCH 3(OPEN)    SWITCH 1(OPEN)       |  SWITCH 3
+   |                 |                 |     --->           |                 |             <---    |
+   --------    -------                 --------      --------                 ---------    ----------
+           MOTOR                                MOTOR                                  MOTOR
+   --------    -------                 --------      --------                 ---------    ----------
+   |                 |                 |                    |                 |     ---             |
+SWITCH 2          SWITCH 4          SWITCH 2(OPEN) ----  SWITCH 4         SWITCH 2  |            SWITCH 4(OPEN)
+   |                 |                 |              |      |                |     |               |
+   |                 |                 |              |      |                |     |               |
+                                                      ˅                             ˅
+                                    MOTOR ROTATES ONE DIRECTION               MOTOR ROTATES OPPOSITE DIRECTION
+                                    
+Above is a an example of             Above is an example of a                 Above is an example of a H Bridge
+a H Bridge controller.               H Bridge with current flowing            which is the same as the previous
+                                    through switch 1 into the motor           example however the motor will
+                                    then back out to switch 4. The            rotate in the other example due 
+                                    motor will spin in one direction          to the current flowing through 
+                                    due to this.                              switch 3 then into switch 2
+                                    
 Below is an example of the pins on a H Bridge
-1. Enable 1       16. Power
-2. Input 1        15. Input 4
-3. Output 1       14. Output 4
-4. Ground         13. Ground
-5. Ground         12. Ground
-6. Output 2       11. Output 3
-7. Input 2        10. Input 3
-8. Power          9. Enable 2
+              -----------
+Enable 1 .1 --|         |-- 16. Power
+Input 1  .2 --|         |-- 15. Input 4
+Output 1 .3 --|         |-- 14. Output 4
+Ground   .4 --|         |-- 13. Ground
+Ground   .5 --|         |-- 12. Ground
+Output 2 .6 --|         |-- 11. Output 3
+Input 2  .7 --|         |-- 10. Input 3
+Power    .8 --|         |-- 9. Enable 2
+              -----------
+              
+Above is an example of what the H Bridge used on the Arduino Car looks like and what each pin does.
+
+Pin 1 is the enable for Output 1 and 2. This is used so that when the motor is connected to power it is on and when it is 
+connected to the ground it is off. 
+
+Pins 2,7,10 and 15 determines what direction each motor will rotate in. Whether that is forward, reverse or stopped. Pin 2 and 7
+control the direction of the left motor and Pin 10 and 15 controls the direction of the right motor. 
+
+Pins 3 and 6 are the spots where the left motor connects to the H Bridge.
+Pin 11 and 14 is where the right motor connects to the H Bridge. 
+
+Pins 4, 5, 12 and 13 are the grounding pins. 
+
+Pins 8 and 16 are the power supply pins
+
+Pin 9 is the enable for the Output 3 and 4. This is used so that when the motor is connected to power it is on and when it is 
+connected to the ground it is off. 
+
+Pins 11 and 14 is where the right motor gets connected to teh H Bridge. 
+

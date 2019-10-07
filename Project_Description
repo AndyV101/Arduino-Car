@@ -10,6 +10,7 @@ In the Arduino Car you use the DC Motor as the power to the wheels. DC Motors ha
 swap the wires on the motor it reverses the direction of the motors. The most common use for DC Motors is for a wheel of a car 
 but you could also use it for a makeshift fan or DIY blender.
 
+
 A H Bridge controller in this circuit is used to power the motor and control whether it is going forward or reverse. As seen
 below the H Bridge controller has 4 switches. When switch 1 and switch 4 are closed the motor spins in one direction. When 
 you close switch 2 and switch 3 the motor spins in the other direction. 
@@ -68,3 +69,26 @@ connected to the ground it is off.
 
 Pins 11 and 14 is where the right motor gets connected to the H Bridge. 
 
+
+An Ultrasonic Sensor produces a very high pitch sound that we cannot hear. The sound then travels and bounces off an object
+and back to sensor. The amount of time it takes for it to get back to the sensor and the speed of the sound you can get the 
+distance between the objects. 
+
+The Ultrasonic Sensor has 4 pins. 1 pin is the ground, 1 is the power. There is also a trigger pin and echo pin. The sound is 
+released from the trigger pin and once it bounces off the object it goes back into the echo pin. 
+
+In the Arduino Car you use Ultrasonic Sensors to control the speed of the DC Motor. The car has two Ultrasonic Sensors. One 
+controls the speed of the left motors and one controls the speed of the right motor.  The closer an object comes to the sensor
+the slower the motor rotates.
+
+ -----------------------------------           
+ |    """"                 """"    |      To the left is an example of a HC-SR04 Ultrasonic Sensor. This is the sensor that is
+ |  "      "             "      "  |      is used in the Arduino Car. 
+ | "        "  HC-SR04  "        " |
+ |  "      "             "      "  |
+ |    """"                 """"    |
+ -----------|--|--|--|--------------
+            |  |  |  |
+            |  |  |  |
+         POWER  ECHO
+             TRIG   GROUND

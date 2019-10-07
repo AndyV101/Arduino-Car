@@ -2,7 +2,20 @@ This description is for a Arduino controlled car. In this project you learn how 
 - DC Motors
 - Ultrasonic Sensors
 - H Bridges
-- Defining Variables
 - Using maps
 By looking at the code in the document "Arduino Car" there is the information and tutorial behind the 
-maps, PinMode and defining variables. When defining varibles
+maps, PinMode and defining variables. 
+
+In the Arduino Car you use the DC Motor as the power to the wheels. DC Motors have no polarity. Which means that if you 
+swap the wires on the motor it reverses the direction of the motors. The most common use for DC Motors is for a wheel of a car 
+but you could also use it for a makeshift fan or DIY blender.
+
+Below is an example of the pins on a H Bridge
+1. Enable 1       16. Power
+2. Input 1        15. Input 4
+3. Output 1       14. Output 4
+4. Ground         13. Ground
+5. Ground         12. Ground
+6. Output 2       11. Output 3
+7. Input 2        10. Input 3
+8. Power          9. Enable 2

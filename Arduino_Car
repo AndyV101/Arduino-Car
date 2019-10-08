@@ -1,1 +1,72 @@
+\This is the code behind the car. The code is required twice for all four wheels because you need two Arduinos for all the 
+\wheels. 
+
+int trigl=13; \Defining the trig pin on the Ultrasonic Sensor.
+int echol=12; \Defining the echo pin on the Ultrasonic Sensor.
+
+int enableR= 6; \Defining all the inputs and enables on the H Bridge.
+int input3= 3;
+int input4= 5;
+int enableL= 11;
+int input1= 10;
+int input2= 9;
+
+
+int button=2;   \This is only used if you wanted a button that can reverse the direction of the motor. 
+int buttonState=LOW;
+
+long distance; \long is used for defining a variables that has the value of -2,147,483,648 to 2,147,483,647.
+long right;  
+  
+void setup(){
+  Serial.begin(9600);
+  pinMode(enableL, OUTPUT);  \This is setting all the pins on the H Bridge to OUTPUT because they OUTPUT information.
+  pinMode(input3, OUTPUT);
+  pinMode(input4, OUTPUT);
+  pinMode(enableR, OUTPUT);
+  pinMode(input1, OUTPUT);
+  pinMode(input2, OUTPUT);
+
+  
+  pinMode(trigl,OUTPUT);  \The trig pin is the OUTPUT because the trig pin is the one that outputs the sound.
+  pinMode(echol,INPUT);   \The echo pin is the INPUT because the echo pin recieves the sound after it bounces off the object.
+
+}
+    long pingl(int trigl, int echol){   \This is creating a pingl function. Used later for controlling the speed of the car.
+    digitalWrite(trigl, LOW);  \This is the function that turns the trig pin to low. Delays for 2 microseconds turns it to high
+    delayMicroseconds(2);      \Then delays 10 microseconds then sets the trig back to low.
+    digitalWrite(trigl, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigl,LOW);
+    
+  
+    long duration;    \long is used for defining a variables that has the value of -2,147,483,648 to 2,147,483,647.
+    duration= pulseIn(echol, HIGH);    \Now duration is set to pulseIn(). pulseIn is a function that reads a pin that is either
+                                       \High or Low. In this function it waits for the echo pin to go from LOW to HIGH it then 
+                                       \starts timing waits for it to go back to LOW and stops timing. 
+    long dist;
+    dist=duration/29/2;     \This is used to find the distance of the object. 
+
+    return dist;        \Then finally it returns the value of dist
+}
+
+void loop(){
+ distance= pingl(trigl,echol);
+ distance= map(distance, 0,1024,0,300);
+ analogWrite(enableL,distance);
+ analogWrite(enableR, distance);
+  
+   buttonState= digitalRead(button);
+  if (!buttonState){
+  digitalWrite(input3, HIGH);
+  digitalWrite(input4,LOW);
+  digitalWrite(input2,LOW);
+  digitalWrite(input1,HIGH);
+  }else{
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,HIGH);
+  digitalWrite(input2,HIGH);
+  digitalWrite(input1,LOW);
+  }
+}
 

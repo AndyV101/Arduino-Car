@@ -4,7 +4,7 @@ This description is for a Arduino controlled car. In this project you learn how 
 - H Bridges
 - Using maps
 By looking at the code in the document "Arduino Car" there is the information and tutorial behind the 
-maps, PinMode and defining variables. 
+maps and PinMode. 
 
 In the Arduino Car you use the DC Motor as the power to the wheels. DC Motors have no polarity. Which means that if you 
 swap the wires on the motor it reverses the direction of the motors. The most common use for DC Motors is for a wheel of a car 

@@ -51,8 +51,9 @@ void setup(){
 }
 
 void loop(){
- distance= pingl(trigl,echol);
- distance= map(distance, 0,1024,0,300);
+ distance= pingl(trigl,echol);     \This goes back to the function defined in the setup. Using the trigl and echol as the 
+                                   \values used in the whole setup.
+ distance= map(distance, 0,1024,0,300);  \
  analogWrite(enableL,distance);
  analogWrite(enableR, distance);
   

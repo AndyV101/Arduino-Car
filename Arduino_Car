@@ -52,7 +52,7 @@ void setup(){
 
 void loop(){
  distance= pingl(trigl,echol);     \This goes back to the function defined in the setup. Using the trigl and echol as the 
-                                   \values used in the whole setup.
+                                   \values used in the pingl function.
  distance= map(distance, 0,1024,0,300);  \This is converting the values of the DC Motors into the corresponding value on the 
                                          \Ultrasonic Sensors. So finding the values between 0-1024 that correspond to what value
                                          \from 0-300
@@ -61,12 +61,12 @@ void loop(){
   
    buttonState= digitalRead(button);     \This chunk of code is only used if you wanted to add in a button that could reverse 
   if (!buttonState){                     \The direction of the motors. 
-  digitalWrite(input3, HIGH);
-  digitalWrite(input4,LOW);
+  digitalWrite(input3, HIGH);            \This reads the button state and if its not equal to LOW then input 1 and 3 go HIGH
+  digitalWrite(input4,LOW);              \and input 2 and 4 go LOW. So the motor rotates one direction. 
   digitalWrite(input2,LOW);
   digitalWrite(input1,HIGH);
-  }else{
-  digitalWrite(input3,LOW);
+  }else{                                 \Otherwise if the buttonstate is equal to LOW then input 1 and 3 go LOW and input 2 and
+  digitalWrite(input3,LOW);              \input 2 and 4 go to HIGH. Therefore the motor rotates in the opposite direction.
   digitalWrite(input4,HIGH);
   digitalWrite(input2,HIGH);
   digitalWrite(input1,LOW);

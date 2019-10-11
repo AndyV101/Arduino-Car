@@ -16,8 +16,8 @@ int button=2;               \This is only used if you wanted a button that can r
 int buttonState=LOW;
 
 long distance;              \long is used for defining a variables that has the value of -2,147,483,648 to 2,147,483,647.
-long right;  
-  
+long right;                 \This is setting distance and right to long so that they are equal to any variable between the 2 
+                            \numbers.
 void setup(){
   Serial.begin(9600);
   pinMode(enableL, OUTPUT);  \This is setting all the pins on the H Bridge to OUTPUT because they OUTPUT information.

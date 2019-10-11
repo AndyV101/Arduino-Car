@@ -98,6 +98,7 @@ Finally is the map function. The map function takes the value of a variable and 
 taking the output range and finding the value that corresponds in the input range. In the Arduino car you take the value of the
 DC Motor which is from 0-1024 and convert it to new values that correspond from the Ultrasonic sensor which is from 0 to 300. 
 
+
 Another option is using a joystick to control the direction of the car. A joystick has 5 pins on it. A Key, X,Y, Voltage and 
 Ground. Joysticks are like potentiometers. Both are analog and they return analog values. The values returned from joystick go
 from 0 to 1024. The joystick contains 2 potentiometers. An X direction and a Y direction. The file Joystick_Values shows the 

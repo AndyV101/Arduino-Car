@@ -76,7 +76,9 @@ and back to sensor. The amount of time it takes for it to get back to the sensor
 distance between the objects. 
 
 The Ultrasonic Sensor has 4 pins. 1 pin is the ground, 1 is the power. There is also a trigger pin and echo pin. The sound is 
-released from the trigger pin and once it bounces off the object it goes back into the echo pin. 
+released from the trigger pin and once it bounces off the object it goes back into the echo pin. The HC-SR04 sensor can detect 
+anything from 2 to 400cm away. Making it a very accurate and useful tool on many projects such as a liquid level sensor or as
+a substitute for a rear view camera
 
 In the Arduino Car you use Ultrasonic Sensors to control the speed of the DC Motor. The car has two Ultrasonic Sensors. One 
 controls the speed of the left motors and one controls the speed of the right motor.  The closer an object comes to the sensor

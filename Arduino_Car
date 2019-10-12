@@ -17,13 +17,13 @@ int buttonState=LOW;
 
 long distance;              \long is used for defining a variables that has the value of -2,147,483,648 to 2,147,483,647.
 long right;                 \This is setting distance and right to long so that they are equal to any variable between the 2 
-                            \numbers.
+                            \numbers above.
 void setup(){
   Serial.begin(9600);
   pinMode(enableL, OUTPUT);  \This is setting all the pins on the H Bridge to OUTPUT because they OUTPUT information.
-  pinMode(input3, OUTPUT);
-  pinMode(input4, OUTPUT);
-  pinMode(enableR, OUTPUT);
+  pinMode(input3, OUTPUT);   \pinMode is a function in C++ used for defining pins as an OUTPUT or INPUT. For example below with
+  pinMode(input4, OUTPUT);   \the echo pin from the Ultrasonic Sensor is an example of an INPUT pin as it recieves information
+  pinMode(enableR, OUTPUT);  \rather than outputting it. 
   pinMode(input1, OUTPUT);
   pinMode(input2, OUTPUT);
 
@@ -33,8 +33,8 @@ void setup(){
 
 }
     long pingl(int trigl, int echol){   \This is creating a pingl function. Used later for controlling the speed of the car.
-    digitalWrite(trigl, LOW);  \This is the function that turns the trig pin to low. Delays for 2 microseconds turns it to high
-    delayMicroseconds(2);               \Then delays 10 microseconds then sets the trig back to low.
+    digitalWrite(trigl, LOW);           \This is the function that turns the trig pin to low. Delays for 2 microseconds 
+    delayMicroseconds(2);               \turns it to high, then delays 10 microseconds then sets the trig back to low.
     digitalWrite(trigl, HIGH); 
     delayMicroseconds(10);
     digitalWrite(trigl,LOW);

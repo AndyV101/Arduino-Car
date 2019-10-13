@@ -10,7 +10,13 @@ swap the wires on the motor it reverses the direction of the motors.One problem 
 wrong direction. The simple fix is swapping the wires connected to the motor. Connecting the motor to a H Bridge allows you to 
 control the current into the motor. The most common use for DC Motors is for a wheel of a car but you could also use it for a 
 makeshift fan or DIY blender. when connecting the DC Motor to a H Bridge you connect the motor to the Output pins on the H 
-Bridge.
+Bridge. A common issue that occurs with DC Motors is the motor rotating the wrong way. This is a simple fix it just involves
+swapping the cables over and thus reversing the polarity.
+
+
+
+
+
 
 A H Bridge controller in this circuit is used to power the motor and control whether it is going forward or reverse. As seen
 below the H Bridge controller has 4 switches. When switch 1 and switch 4 are closed the motor spins in one direction. When 
@@ -70,6 +76,16 @@ connected to the ground it is off.
 
 Pins 11 and 14 is where the right motor gets connected to the H Bridge. 
 
+Pins 2,7,10 and 15 are the input pins of the H Bridge and are used to control the spinning direction of the motors. Pins 2 and 7
+control the direction of motor A and Pins 10 and 15 control the direction of motor B
+
+Pins 1 and 9 control the speed of the motors as well as if they are on or off. Using Pulse Width Modulation or PWM the enable
+pins control the speed of the motor. 
+
+
+
+
+
 
 An Ultrasonic Sensor produces a very high pitch sound that we cannot hear. The sound then travels and bounces off an object
 and back to sensor. The amount of time it takes for it to get back to the sensor and the speed of the sound you can get the 
@@ -82,7 +98,7 @@ a substitute for a rear view camera
 
 In the Arduino Car you use Ultrasonic Sensors to control the speed of the DC Motor. The car has two Ultrasonic Sensors. One 
 controls the speed of the left motors and one controls the speed of the right motor.  The closer an object comes to the sensor
-the slower the motor rotates.
+the slower the motor rotates. 
 
  -----------------------------------           
  |    """"                 """"    |      To the left is an example of a HC-SR04 Ultrasonic Sensor. This is the sensor that is
@@ -96,9 +112,17 @@ the slower the motor rotates.
          POWER  ECHO
              TRIG   GROUND
              
+             
+             
+        
+        
+        
 Finally is the map function. The map function takes the value of a variable and converts it to a new set of values. It involves
 taking the output range and finding the value that corresponds in the input range. In the Arduino car you take the value of the
 DC Motor which is from 0-1024 and convert it to new values that correspond from the Ultrasonic sensor which is from 0 to 300. 
+
+
+
 
 
 Another option is using a joystick to control the direction of the car. A joystick has 5 pins on it. A Key, X,Y, Voltage and 

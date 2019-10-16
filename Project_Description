@@ -82,8 +82,8 @@ pins control the speed of the motor.
 
 
 
-
-
+                                                     ULTRASONIC SENSOR
+        
 An Ultrasonic Sensor produces a very high pitch sound that we cannot hear. The sound then travels and bounces off an object
 and back to sensor. The amount of time it takes for it to get back to the sensor and the speed of the sound you can get the 
 distance between the objects. 
@@ -112,7 +112,7 @@ the slower the motor rotates.
              
              
         
-        
+                                                        MAP FUNCTION
         
 Finally is the map function. The map function takes the value of a variable and converts it to a new set of values. It involves
 taking the output range and finding the value that corresponds in the input range. In the Arduino car you take the value of the
@@ -120,7 +120,7 @@ DC Motor which is from 0-1024 and convert it to new values that correspond from 
 
 
 
-
+                                                    ALTERNATIVE OPTIONS
 
 Another option is using a joystick to control the direction of the car. A joystick has 5 pins on it. A Key, X,Y, Voltage and 
 Ground. Joysticks are like potentiometers. Both are analog and they return analog values. The values returned from joystick go

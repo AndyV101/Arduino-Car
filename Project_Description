@@ -4,19 +4,16 @@ This description is for a Arduino controlled car. In this project you learn how 
 - H Bridges
 - Using maps
 
-
+                                                          DC MOTORS
+                                                          
 In the Arduino Car you use the DC Motor as the power to the wheels. DC Motors have no polarity. Which means that if you 
-swap the wires on the motor it reverses the direction of the motors.One problem you might encounter is motor spinning in the 
-wrong direction. The simple fix is swapping the wires connected to the motor. Connecting the motor to a H Bridge allows you to 
-control the current into the motor. The most common use for DC Motors is for a wheel of a car but you could also use it for a 
-makeshift fan or DIY blender. when connecting the DC Motor to a H Bridge you connect the motor to the Output pins on the H 
-Bridge. A common issue that occurs with DC Motors is the motor rotating the wrong way. This is a simple fix it just involves
-swapping the cables over and thus reversing the polarity.
+swap the wires on the motor it reverses the direction of the motors.Connecting the motor to a H Bridge allows you to control 
+the current into the motor which allows you to control the speed and direction of the motor. The most common use for DC Motors 
+is for a wheel of a car but you could also use it for a makeshift fan or DIY blender. When connecting the DC Motor to a H Bridge
+you connect the motor to the output pins on the H Bridge. A common issue that occurs with DC Motors is the motor rotating the 
+wrong way. This is a simple fix it just involves swapping the cables over and thus reversing the polarity.
 
-
-
-
-
+                                                          H BRIDGE
 
 A H Bridge controller in this circuit is used to power the motor and control whether it is going forward or reverse. As seen
 below the H Bridge controller has 4 switches. When switch 1 and switch 4 are closed the motor spins in one direction. When 

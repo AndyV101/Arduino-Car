@@ -1,0 +1,93 @@
+\This is alternative car to the original. This one uses 2 wheel but with 2 ultrasonic sensors controlling each individual wheel.
+\First set connect 2 motors to one H Bridge like in the car with 4 wheels. Then connect the ultrasonic sensors to the arduino as
+\well. Finally comes the code.
+
+int trigl=8;    \Again setting all the variables to the pin that they are connected to. 
+int echol=13;
+
+int trigr=4;
+int echor=7;
+
+int enableR= 11;
+int input3= 10;
+int input4= 9;
+int enableL= 3;
+int input1= 5;
+int input2= 6;
+
+int button=2;
+int buttonState=LOW;
+
+long distance;
+long right;  
+  
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(enableL, OUTPUT);    \Setting all the pins to the OUTPUT or INPUT
+  pinMode(input3, OUTPUT);
+  pinMode(input4, OUTPUT);
+  pinMode(enableR, OUTPUT);
+  pinMode(input1, OUTPUT);
+  pinMode(input2, OUTPUT);
+
+  pinMode(trigl,OUTPUT);
+  pinMode(echol,INPUT);
+  pinMode(trigr, OUTPUT);
+  pinMode(echor,INPUT);
+
+}
+    long pingl(int trigl, int echol){      \Function that makes one ultrasonic sensor ping
+    digitalWrite(trigl, LOW);
+    delayMicroseconds(2);
+    
+    digitalWrite(trigl, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigl,LOW);
+    
+    long duration;
+    duration= pulseIn(echol, HIGH);
+    
+    long dist;
+    dist=duration/29/2;
+
+    return dist;
+} 
+long pingr(int trigr, int echor){        \Function that makes the second ultrasonic sensor ping
+    digitalWrite(trigr, LOW);  
+    delayMicroseconds(2);
+    
+    digitalWrite(trigr, HIGH); 
+    delayMicroseconds(10);
+    digitalWrite(trigr,LOW);
+    
+    long durationr;
+    durationr= pulseIn(echor, HIGH);
+    
+    long distr;
+    distr=durationr/29/2;
+
+    return distr;
+}
+
+void loop(){
+ distance= pingl(trigl,echol);             \Function to power the motor depending on the distance something is from the sensor.
+ distance= map(distance, 0,1024,0,400);
+ analogWrite(enableL,distance);
+ right=pingr(trigr,echor);                 \Function for the second motor. 
+ right=map(right,0,1024,0,400);
+ analogWrite(enableR,right);
+ 
+  buttonState= digitalRead(button);        \Again a button that could control if the motor is rotating forwards or in reverse. 
+  if (!buttonState){
+  digitalWrite(input3, HIGH);
+  digitalWrite(input4,LOW);
+  digitalWrite(input2,LOW);
+  digitalWrite(input1,HIGH);
+  }else{
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,HIGH);
+  digitalWrite(input2,HIGH);
+  digitalWrite(input1,LOW);
+  }
+}
